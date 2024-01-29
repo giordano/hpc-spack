@@ -2,9 +2,9 @@
 # this is to use the installation of hpc spack on Myriad as user ccspapp
 
 
-if [[ "$USER" == "ccspapp" ]]; then
+if [[ "$USER" == "cceamgi" ]]; then
 
-    TOP_DIR="${HOME}/Scratch/spack/0.20/hpc-spack"
+    TOP_DIR="${HOME}/repo/hpc-spack"
     cd "${TOP_DIR}"
     alias sps="${TOP_DIR}/spacksites/spacksites"
     source  "${TOP_DIR}/spacksites/process-env-scripts/spack-deps-rhel-7.8.sh"
