@@ -395,24 +395,25 @@ class Charmpp(Package):
         build = Executable(join_path(".", "build"))
         build(target, self.charmarch, *options)
 
-        # Charm++'s install script does not copy files, it only creates
+        # Before 7.x Charm++'s install script does not copy files, it only creates
         # symbolic links. Fix this.
-        for dirpath, dirnames, filenames in os.walk(builddir):
-            for filename in filenames:
-                filepath = join_path(dirpath, filename)
-                if os.path.islink(filepath):
-                    tmppath = filepath + ".tmp"
-                    # Skip dangling symbolic links
-                    try:
-                        copy(filepath, tmppath)
-                        os.remove(filepath)
-                        os.rename(tmppath, filepath)
-                    except (IOError, OSError):
-                        pass
+        if self.spec.satisfies("@:6"):
+            for dirpath, dirnames, filenames in os.walk(builddir):
+                for filename in filenames:
+                    filepath = join_path(dirpath, filename)
+                    if os.path.islink(filepath):
+                        tmppath = filepath + ".tmp"
+                        # Skip dangling symbolic links
+                        try:
+                            copy(filepath, tmppath)
+                            os.remove(filepath)
+                            os.rename(tmppath, filepath)
+                        except (IOError, OSError):
+                            pass
 
-        tmp_path = join_path(builddir, "tmp")
-        if not os.path.islink(tmp_path):
-            shutil.rmtree(tmp_path)
+            tmp_path = join_path(builddir, "tmp")
+            if not os.path.islink(tmp_path):
+                shutil.rmtree(tmp_path)
 
         if self.spec.satisfies("@6.9.99"):
             # A broken 'doc' link in the prefix can break the build.
