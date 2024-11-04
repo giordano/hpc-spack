@@ -325,7 +325,7 @@ class Charmpp(Package):
 
         # 7.0.0+ use buildcmake and have an install step if install_prefix is specified
         if self.spec.satisfies("@7.0.0:"):
-            options.append("--install_prefix=%s" % prefix)
+            options.append("--install-prefix=%s" % prefix)
         else:
             options.append("--destination=%s" % builddir)
 
