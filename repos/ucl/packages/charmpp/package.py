@@ -322,7 +322,12 @@ class Charmpp(Package):
             options.append(os.path.basename(self.compiler.fc))
 
         options.append("-j%d" % make_jobs)
-        options.append("--destination=%s" % builddir)
+
+        # 7.0.0+ use buildcmake and have an install step if install_prefix is specified
+        if self.spec.satisfies("@7.0.0:"):
+            options.append("--install_prefix=%s" % prefix)
+        else:
+            options.append("--destination=%s" % builddir)
 
         if spec.satisfies("pmi=slurmpmi"):
             options.append("slurmpmi")
