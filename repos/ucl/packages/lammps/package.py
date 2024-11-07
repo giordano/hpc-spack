@@ -391,15 +391,15 @@ class Lammps(CMakePackage, CudaPackage, ROCmPackage, PythonExtension):
         deprecated=True,
     )
 
-    #depends_on("cxx", type="build")
+    depends_on("cxx", type="build")
 
     # mdi, scafacos, ml-quip, qmmm require C, but not available in Spack
-    #for c_pkg in ("adios", "atc", "awpmd", "ml-pod", "electrode", "kim", "h5md", "tools", "rheo"):
-        #depends_on("c", type="build", when=f"+{c_pkg}")
+    for c_pkg in ("adios", "atc", "awpmd", "ml-pod", "electrode", "kim", "h5md", "tools", "rheo"):
+        depends_on("c", type="build", when=f"+{c_pkg}")
 
     # scafacos, ml-quip require Fortran, but not available in Spack
-    #for fc_pkg in ("kim",):
-        #depends_on("fortran", type="build", when=f"+{fc_pkg}")
+    for fc_pkg in ("kim",):
+        depends_on("fortran", type="build", when=f"+{fc_pkg}")
 
     stable_versions = {
         "20240829",
