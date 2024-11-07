@@ -63,7 +63,7 @@ class Castep(CMakePackage, MakefilePackage):
 
     build_system(
         conditional("cmake", when="@23:"),
-        conditional("makefile", when="@:0.22"),
+        conditional("makefile", when="@:22"),
         default="cmake",
     )
 
@@ -71,8 +71,8 @@ class Castep(CMakePackage, MakefilePackage):
         depends_on("cmake@3.18:", type="build")
 
     depends_on("rsync", type="build")
-    #depends_on("fortran", type="build")
-    #depends_on("c", type="build") # for Utility
+    depends_on("fortran", type="build")
+    depends_on("c", type="build") # for Utility
     depends_on("blas")
     depends_on("lapack")
     depends_on("fftw-api")
