@@ -59,7 +59,7 @@ class Castep(CMakePackage, MakefilePackage):
 
     # Fixes generation of buildinfo_data.f90 in the cmake build 
     # can be either case of [Nn]ot a git repo
-    patch("castep_2023.1.1_buildinfo.patch", when="@23.1.1")
+    patch("castep_2023.1.1_buildinfo.patch", when="@23.1")
 
     # Patches the cmake install step for libxc's mod files.
     patch("castep_cmake_libxc523.patch", when="@24")
