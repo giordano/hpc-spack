@@ -1,6 +1,4 @@
 mirrors:
-  manylinuxcache:
-    url: https://binaries.spack.io/develop/developer-tools-manylinux2014
   buildcache:
     fetch:
       url: file:///shared/ucl/apps/spack/0.23/buildcache
@@ -20,4 +18,5 @@ mirrors:
       endpoint_url: null
   pkgstore: 
     url: file:///shared/ucl/apps/pkg-store
-
+#  manylinuxcache:
+#    url: https://binaries.spack.io/develop/developer-tools-manylinux2014
