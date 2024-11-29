@@ -19,8 +19,9 @@ spack:
       - netcdf-fortran@4.6.1
       - picard@2.26.2
       - samtools@1.17
-      - castep@24.1 +libxc
-      - castep@23.1 +libxc
+      # stop it picking an openblas with threads=openmp purely for package reuse
+      - castep@24.1 +libxc ^openblas threads=none
+      - castep@23.1 +libxc ^openblas threads=none
       - cp2k@2024.3 +quip
       - gromacs@2024.3 +double
       - gromacs@2023.5 +double +plumed
@@ -40,6 +41,12 @@ spack:
           ^mpi: '{name}/{version}-{^mpi.name}/{compiler.name}-{compiler.version}'
           ^cuda: '{name}/{version}-cuda/{compiler.name}-{compiler.version}'
           ^cuda ^mpi: '{name}/{version}-{^mpi.name}-cuda/{compiler.name}-{compiler.version}'
+
+          # Named packages where we have more than one installed so need different module names. 
+          # Add omp for openmp variants.
+          fftw +mpi +openmp: '{name}/{version}-{^mpi.name}-omp/{compiler.name}-{compiler.version}'
+          openblas threads=openmp: '{name}/{version}-omp/{compiler.name}-{compiler.version}'
+
     prefix_inspections:
       lib: ["LD_LIBRARY_PATH", "LIBRARY_PATH"]
       lib64: ["LD_LIBRARY_PATH", "LIBRARY_PATH"]
