@@ -12,8 +12,6 @@ spack:
       - hdf5@1.14.3 +fortran +mpi +hl
       - htslib@1.17
       - openmpi@4.1.6 fabrics=psm2,cma,ucx,ofi schedulers=sge
-      - orca@5.0.4
-      # orca 6 is in machine-specific as there's an avx2-only separate binary
       - python@3.11.6
       - netcdf-c@4.9.2 -mpi
       - netcdf-fortran@4.6.1
