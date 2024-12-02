@@ -24,6 +24,10 @@ class Orca(Package):
     license("LGPL-2.1-or-later")
 
     version(
+        "avx2-6.0.1", sha256="f31f98256a0c6727b6ddfe50aa3ac64c45549981138d670a57e90114b4b9c9d2"
+    )
+    version("6.0.1", sha256="5e9b49588375e0ce5bc32767127cc725f5425917804042cdecdfd5c6b965ef61")
+    version(
         "avx2-6.0.0", sha256="02c21294efe7b1b721e26cb90f98ee15ad682d02807201b7d217dfe67905a2fd"
     )
     version("6.0.0", sha256="219bd1deb6d64a63cb72471926cb81665cbbcdec19f9c9549761be67d49a29c6")
@@ -44,6 +48,8 @@ class Orca(Package):
         "5.0.4": "4.1.2",
         "6.0.0": "4.1.6",
         "avx2-6.0.0": "4.1.6",
+        "6.0.1": "4.1.6",
+        "avx2-6.0.1": "4.1.6",
     }
     for orca_version, openmpi_version in openmpi_versions.items():
         depends_on(
