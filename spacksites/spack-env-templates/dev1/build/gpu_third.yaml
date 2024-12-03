@@ -1,14 +1,17 @@
 spack:
+
   specs:
-  # CUDA packages, compile them with gcc@12
+  # depend on gpu-on-gpu packages
   - matrix:
-    - - 'dbcsr@2.6.0'
+    - - 'cp2k@2024.2 +cuda +mpi +openmp ~sirius cuda_arch=60,70,80 build_system=cmake ^dbcsr cuda_arch=60,70,80 ^libxsmm@1.17'
     - - '%gcc@12.3.0'
   concretizer:
     unify: when_possible
   view: false
   include_concrete:
+  - ${SPACK_ROOT}/spack/var/spack/environments/base
   - ${SPACK_ROOT}/spack/var/spack/environments/gpu_first
+  - ${SPACK_ROOT}/spack/var/spack/environments/gpu-on-gpu
 
   modules:
     default:
