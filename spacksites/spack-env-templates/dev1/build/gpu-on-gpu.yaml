@@ -8,7 +8,7 @@ spack:
     unify: when_possible
   view: false
   include_concrete:
-  - ${SPACK_ROOT}/spack/var/spack/environments/gpu_first
+  - ${SPACK_ROOT}/var/spack/environments/gpu_first
 
   modules:
     default:
