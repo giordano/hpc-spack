@@ -17,7 +17,7 @@ spack:
     unify: when_possible
   view: false
   include_concrete:
-  - $SPACK_ROOT/spack/var/spack/environments/base
+  - ${SPACK_ROOT}/spack/var/spack/environments/base
 
   modules:
     default:

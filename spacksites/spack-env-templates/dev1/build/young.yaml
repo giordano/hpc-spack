@@ -7,8 +7,8 @@ spack:
     unify: when_possible
   view: false
   include_concrete:
-  - $SPACK_ROOT/spack/var/spack/environments/base
-  - $SPACK_ROOT/spack/var/spack/environments/ompi412
+  - ${SPACK_ROOT}/spack/var/spack/environments/base
+  - ${SPACK_ROOT}/spack/var/spack/environments/ompi412
   # Young's gpu environments are in the avx2.yaml
 
   modules:
