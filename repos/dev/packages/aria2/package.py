@@ -24,9 +24,9 @@ class Aria2(AutotoolsPackage):
     variant("metalink", default=True, description="Enable Metalink support")
 
     # Aria picks different defaults for TLS based on platform
-    if sys.platform == "darwin":
+    if platform == "darwin":
         default_tls = "appletls"
-    elif sys.platform.startswith("win") or sys.platform == "cygwin":
+    elif platform.startswith("win") or platform == "cygwin":
         default_tls = "wintls"
     else:  
         default_tls = "gnutls"
