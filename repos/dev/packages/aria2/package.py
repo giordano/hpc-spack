@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+import sys
 
 from spack.package import *
 
@@ -24,9 +25,9 @@ class Aria2(AutotoolsPackage):
     variant("metalink", default=True, description="Enable Metalink support")
 
     # Aria picks different defaults for TLS based on platform
-    if platform == "darwin":
+    if sys.platform == "darwin":
         default_tls = "appletls"
-    elif platform.startswith("win") or platform == "cygwin":
+    elif sys.platform.startswith("win") or sys.platform == "cygwin":
         default_tls = "wintls"
     else:  
         default_tls = "gnutls"
