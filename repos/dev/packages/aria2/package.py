@@ -22,13 +22,21 @@ class Aria2(AutotoolsPackage):
 
     variant("bittorrent", default=True, description="Enable bittorrent support")
     variant("metalink", default=True, description="Enable Metalink support")
+
+    # Aria picks different defaults for TLS based on platform
+    if sys.platform == "darwin":
+        default_tls = "appletls"
+    elif sys.platform.startswith("win") or sys.platform == "cygwin":
+        default_tls = "wintls"
+    else:  
+        default_tls = "gnutls"
+
     variant(
-        "tls",
-        values=disjoint_sets(
-            ("auto",), ("gnutls", "openssl", "appletls", "wintls")
-        ).with_non_feature_values("auto"),
+        "tls", default=default_tls,
+        values=("gnutls", "openssl", "appletls", "wintls"),
+        multi=False,
         description="List of TLS suppliers for which support is enabled; "
-        "'auto' lets aria determine. Chooses OS support on OSX and Win, chooses GnuTLS over OpenSSL",
+        "Defaults choose OS support on OSX and Win, chooses GnuTLS over OpenSSL",
     )
 
     depends_on("c", type="build")  # generated
