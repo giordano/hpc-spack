@@ -20,6 +20,8 @@ class Aria2(AutotoolsPackage):
     version("1.35.0", sha256="fd85589416f8246cefc4e6ba2fa52da54fdf11fd5602a2db4b6749f7c33b5b2d")
     version("1.34.0", sha256="ec4866985760b506aa36dc9021dbdc69551c1a647823cae328c30a4f3affaa6c")
 
+    variant("bittorrent", default=True, description="Enable bittorrent support")
+    variant("metalink", default=True, description="Enable Metalink support")
     variant(
         "tls",
         values=disjoint_sets(
@@ -28,8 +30,6 @@ class Aria2(AutotoolsPackage):
         description="List of TLS suppliers for which support is enabled; "
         "'auto' lets aria determine. Chooses OS support on OSX and Win, chooses GnuTLS over OpenSSL",
     )
-    variant("bittorrent", default=True, description="Enable bittorrent support")
-    variant("metalink", default=True, description="Enable Metalink support")
 
     depends_on("c", type="build")  # generated
     depends_on("cxx", type="build")  # generated
@@ -42,7 +42,6 @@ class Aria2(AutotoolsPackage):
     depends_on("sqlite")
     depends_on("gnutls", when "tls=gnutls")
     depends_on("openssl", when "tls=openssl")
-
 
     def configure_args(self):
         spec = self.spec
