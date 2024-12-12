@@ -40,8 +40,8 @@ class Aria2(AutotoolsPackage):
     depends_on("zlib-api")
     depends_on("c-ares")
     depends_on("sqlite")
-    depends_on("gnutls", when "tls=gnutls")
-    depends_on("openssl", when "tls=openssl")
+    depends_on("gnutls", when="tls=gnutls")
+    depends_on("openssl", when="tls=openssl")
 
     def configure_args(self):
         spec = self.spec
