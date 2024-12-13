@@ -57,13 +57,25 @@ class Aria2(AutotoolsPackage):
         config_args = []
 
         if spec.satisfies("tls=gnutls"):
-            config_args.append(["--with-tls", "--without-openssl", "--without-appletls", "--without-wintls"])
+            config_args.append("--with-gnutls")
+            config_args.append("--without-openssl")
+            config_args.append("--without-appletls")
+            config_args.append("--without-wintls")
         elif spec.satisfies("tls=openssl"):
-            config_args.append(["--with-openssl", "--without-gnutls", "--without-appletls", "--without-wintls"])
+            config_args.append("--with-openssl") 
+            config_args.append("--without-gnutls") 
+            config_args.append("--without-appletls") 
+            config_args.append("--without-wintls")
         elif spec.satisfies("tls=appletls"):
-            config_args.append(["--with-appletls", "--without-gnutls", "--without-openssl", "--without-wintls"])
+            config_args.append("--with-appletls")
+            config_args.append("--without-gnutls")
+            config_args.append("--without-openssl")
+            config_args.append("--without-wintls")
         elif spec.satisfies("tls=wintls"):
-            config_args.append(["--with-wintls", "--without-gnutls", "--without-openssl", "--without-appletls"])
+            config_args.append("--with-wintls")
+            config_args.append("--without-gnutls")
+            config_args.append("--without-openssl")
+            config_args.append("--without-appletls")
 
         if spec.satisfies("~bittorrent"):
             config_args.append("--disable-bittorrent")
