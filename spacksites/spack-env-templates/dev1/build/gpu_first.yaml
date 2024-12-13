@@ -26,7 +26,7 @@ spack:
           # Named packages where we have more than one installed so need different module names.
           # First match is picked, so more specific need to be at top. 'all' can be anywhere.
           # Add omp for openmp variants.
-          fftw ~openmp ^mpi+cuda: '{name}/{version}-{^mpi.name}-omp-cuda/{compiler.name}-{compiler.version}'
+          fftw +openmp ^mpi+cuda: '{name}/{version}-{^mpi.name}-omp-cuda/{compiler.name}-{compiler.version}'
           fftw +openmp ^mpi: '{name}/{version}-{^mpi.name}-omp/{compiler.name}-{compiler.version}'
           fftw ~openmp ^mpi+cuda: '{name}/{version}-{^mpi.name}-cuda/{compiler.name}-{compiler.version}'
           openblas threads=openmp: '{name}/{version}-omp/{compiler.name}-{compiler.version}'
